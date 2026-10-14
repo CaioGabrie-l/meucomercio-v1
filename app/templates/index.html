@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MeuComércio | Gestão do seu negócio</title>
+
+<link rel="icon" href="/static/meucomercio-mc.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css?v=19">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="brand">
+                <span class="brand-symbol">MC</span>
+                <span class="brand-name">Meu<span>Comércio</span></span>
+            </a>
+
+            <p class="menu-label">MENU PRINCIPAL</p>
+
+            <nav class="navigation">
+                <a href="/" class="nav-link active">
+                    <span class="nav-icon">▦</span>
+                    Visão geral
+                </a>
+                <a href="#produtos" class="nav-link">
+                    <span class="nav-icon">□</span>
+                    Produtos
+                </a>
+                <a href="#vendas" class="nav-link">
+                    <span class="nav-icon">↗</span>
+                    Vendas
+                </a>
+                <a href="#financeiro" class="nav-link">
+                    <span class="nav-icon">◷</span>
+                    Financeiro
+                </a>
+                <a href="#movimentacoes" class="nav-link">
+                    <span class="nav-icon">⇄</span>
+                    Movimentações
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="store-indicator"></div>
+                <div>
+                    <strong>Meu negócio</strong>
+                    <span>Gestão da loja</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">PAINEL DE CONTROLE</p>
+                    <h1>Visão geral</h1>
+                    <p class="subtitle">
+                        Acompanhe o que acontece no seu negócio.
+                    </p>
+                </div>
+
+                <div class="topbar-status">
+                   <span class="status-label">Sistema online</span>
+                   <span class="status-dot"></span>
+                </div>
+            </header>
+
+            <section class="welcome-banner">
+                <div>
+                    <p class="banner-label">SEU NEGÓCIO, SOB CONTROLE</p>
+                    <h2>Bom ter você por aqui.</h2>
+                    <p>
+                        Organize suas vendas, acompanhe seu dinheiro
+                        e tome decisões melhores.
+                    </p>
+                </div>
+
+                <div class="banner-mark">MC<span>.</span></div>
+            </section>
+
+            <section class="section" id="financeiro">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">RESUMO FINANCEIRO</p>
+                        <h2>Como estão as coisas?</h2>
+                    </div>
+                    <span class="period-label">Visão geral</span>
+                </div>
+
+                <div class="metrics-grid">
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-label">Vendas recebidas</span>
+                            <span class="metric-icon">↗</span>
+                        </div>
+                        <p class="metric-value" id="total-recebido">R$ 0,00</p>
+                        <p class="metric-description">Valores já recebidos</p>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-label">Valores pendentes</span>
+                            <span class="metric-icon pending">◷</span>
+                        </div>
+                        <p class="metric-value" id="total-pendente">R$ 0,00</p>
+                        <p class="metric-description">A receber dos clientes</p>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-label">Despesas</span>
+                            <span class="metric-icon expense">↘</span>
+                        </div>
+                        <p class="metric-value" id="total-despesas">R$ 0,00</p>
+                        <p class="metric-description">Saídas registradas</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <article class="panel" id="vendas">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">ACOMPANHAMENTO</p>
+                            <h2>Vendas recentes</h2>
+                        </div>
+                        <span class="panel-symbol">↗</span>
+                    </div>
+
+                    <div id="lista-vendas" class="sales-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">↗</div>
+                            <h3>Carregando vendas...</h3>
+                            <p>Buscando as vendas registradas no sistema.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="panel" id="resumo-produtos">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">CONTROLE DE ESTOQUE</p>
+                            <h2>Produtos</h2>
+                        </div>
+                        <span class="panel-symbol">□</span>
+                    </div>
+
+                    <div class="product-summary">
+                        <div>
+                            <span class="summary-label">Produtos cadastrados</span>
+                            <strong id="total-produtos">—</strong>
+                        </div>
+                        <div>
+                            <span class="summary-label">Estoque baixo</span>
+                            <strong id="total-estoque-baixo">—</strong>
+                        </div>
+                    </div>
+
+                    <p class="panel-note">
+                        Indicadores atualizados a partir dos produtos
+                        cadastrados no sistema.
+                    </p>
+                </article>
+            </section>
+
+            <section class="panel product-management" id="produtos">
+                <div class="panel-heading product-management-heading">
+                    <div>
+                        <p class="eyebrow">CATÁLOGO</p>
+                        <h2>Gerenciamento de produtos</h2>
+                        <p class="subtitle">
+                            Consulte preços, disponibilidade e níveis de estoque.
+                        </p>
+                    </div>
+
+                    <div class="product-management-heading-actions">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="btn-entrada-produtos"
+                        >
+                            + Entrada de produtos
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="btn-novo-produto"
+                            aria-expanded="false"
+                            aria-controls="formulario-produto"
+                        >
+                            + Novo produto
+                        </button>
+                    </div>
+                </div>
+
+                <form id="formulario-produto" class="product-form" hidden>
+                    <div class="product-form-heading">
+                        <div>
+                            <p class="eyebrow" id="produto-formulario-etiqueta">
+                                NOVO CADASTRO
+                            </p>
+                            <h3 id="produto-formulario-titulo">
+                                Cadastrar produto
+                            </h3>
+                            <p class="subtitle" id="produto-formulario-descricao">
+                                Preencha os dados para adicionar um produto ao catálogo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product-form-fields">
+                        <div class="form-group">
+                            <label for="produto-nome">Nome do produto *</label>
+                            <input
+                                type="text"
+                                id="produto-nome"
+                                name="nome"
+                                placeholder="Ex.: Refrigerante 2 litros"
+                                maxlength="120"
+                                autocomplete="off"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="produto-fornecedor">Fornecedor</label>
+                            <input
+                                type="text"
+                                id="produto-fornecedor"
+                                name="fornecedor"
+                                placeholder="Ex.: Distribuidora Central"
+                                maxlength="150"
+                                autocomplete="organization"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="produto-preco">Preço de venda (R$) *</label>
+                            <input
+                                type="number"
+                                id="produto-preco"
+                                name="preco"
+                                placeholder="Ex.: 12,50"
+                                min="0.01"
+                                max="999999999"
+                                step="0.01"
+                                inputmode="decimal"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="produto-estoque">Estoque *</label>
+                            <input
+                                type="number"
+                                id="produto-estoque"
+                                name="estoque"
+                                placeholder="Ex.: 20"
+                                min="0"
+                                max="999999999"
+                                step="1"
+                                inputmode="numeric"
+                                value="0"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <p
+                        id="mensagem-formulario-produto"
+                        class="form-feedback"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></p>
+
+                    <div class="product-form-actions">
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            id="btn-salvar-produto"
+                        >
+                            Salvar produto
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="btn-cancelar-produto"
+                        >
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+
+                <div class="product-toolbar">
+                    <div class="product-search">
+                        <label for="pesquisa-produtos">Pesquisar produto</label>
+                        <input
+                            type="search"
+                            id="pesquisa-produtos"
+                            placeholder="Digite o nome do produto ou fornecedor..."
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="product-filter">
+                        <label for="filtro-produtos">Mostrar</label>
+                        <select id="filtro-produtos">
+                            <option value="ativos">Produtos ativos</option>
+                            <option value="todos">Todos os produtos</option>
+                            <option value="inativos">Produtos inativos</option>
+                            <option value="estoque-baixo">Estoque baixo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p
+                    id="mensagem-acoes-produtos"
+                    class="form-feedback"
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                ></p>
+
+                <div class="product-table-wrapper">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Produto</th>
+                                <th>Fornecedor</th>
+                                <th>Preço</th>
+                                <th>Estoque</th>
+                                <th>Situação</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="lista-produtos">
+                            <tr>
+                                <td colspan="7" class="product-table-message">
+                                    Carregando produtos...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="product-list-footer">
+                    <span id="contador-produtos">Carregando produtos...</span>
+                    <span>Estoque baixo: 5 unidades ou menos</span>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>
+                    MeuComércio <span>·</span>
+                    Gestão simples para o seu negócio.
+                </p>
+
+                <div class="creator-signature">
+                    <span class="signature-name">C.G. Cassemiro Studio</span>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+<script src="/static/script.js?v=5"></script>
+<script src="/static/interface.js?v=23"></script>
+<script src="/static/vendas.js?v=4"></script>
+</body>
+</html>
